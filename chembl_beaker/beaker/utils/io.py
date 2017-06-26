@@ -4,7 +4,7 @@ __author__ = 'mnowotka'
 
 import os
 import tempfile
-import StringIO
+import io
 from rdkit.Chem import SDMolSupplier
 from rdkit.Chem import SmilesMolSupplier
 from rdkit.Chem import MolFromSmiles
@@ -72,7 +72,7 @@ def _getSDFStream(f, mols):
 #-----------------------------------------------------------------------------------------------------------------------
 
 def _getSDFString(mols):
-    sio = StringIO.StringIO()
+    sio = io.StringIO()
     _getSDFStream(sio, mols)
     return sio.getvalue()
 
@@ -90,7 +90,7 @@ def _getSMILESStream(f, mols, delimiter=' ', nameHeader='Name', includeHeader=Tr
 
 def _getSMILESString(mols, delimiter=' ', nameHeader='Name', includeHeader=True, isomericSmiles=False,
                      kekuleSmiles=False):
-    sio = StringIO.StringIO()
+    sio = io.StringIO()
     _getSMILESStream(sio, mols, delimiter=delimiter, nameHeader=nameHeader, includeHeader=includeHeader,
         isomericSmiles=isomericSmiles, kekuleSmiles=kekuleSmiles)
     return sio.getvalue()
@@ -98,7 +98,7 @@ def _getSMILESString(mols, delimiter=' ', nameHeader='Name', includeHeader=True,
 #-----------------------------------------------------------------------------------------------------------------------
 
 def _getSMARTSString(mols, isomericSmiles=False):
-    sio = StringIO.StringIO()
+    sio = io.StringIO()
     for mol in mols:
         sio.write(MolToSmarts(mol, isomericSmiles) + '\n')
     return sio.getvalue()
@@ -107,7 +107,7 @@ def _getSMARTSString(mols, isomericSmiles=False):
 
 def _getXYZ(mols):
 
-    sio = StringIO.StringIO()
+    sio = io.StringIO()
 
     for i, mol in enumerate(mols):
 

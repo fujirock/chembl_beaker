@@ -137,7 +137,7 @@ class Canvas(CanvasBase):
 
     orientation=kwargs.get('orientation','E')
     text = re.sub(r'\<.+?\>','',text)
-    print text,orientation
+    print (text,orientation)
     w,h = font.size * len(text),font.size
     offset = w*pos[2]
     bw,bh = w,h*1.4

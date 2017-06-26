@@ -10,7 +10,7 @@ from chembl_beaker.beaker import config
 from chembl_beaker.beaker.cache import cache
 
 if not cache:
-    print "Caching plugin enabled but no cache backend configured, cashing will be skipped..."
+    print ("Caching plugin enabled but no cache backend configured, cashing will be skipped...")
 
 if cache and config.get('clear_cache_on_start', False):
     cache.clear()

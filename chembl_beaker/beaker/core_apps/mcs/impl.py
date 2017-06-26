@@ -15,10 +15,10 @@ def _mcs(data, asSmiles, atomCompare, bondCompare, threshold, ringMatchesRingOnl
         return
     if len(ms) == 1:
         if asSmiles:
-            print 'SMARTS'
+            print ('SMARTS')
             return Chem.MolToSmiles(ms[0])
         else:
-            print 'SMILES'
+            print ('SMILES')
             return Chem.MolToSmarts(ms[0])
 
     if threshold:

@@ -115,11 +115,11 @@ class TestServer(unittest.TestCase):
 
     def test_ctab2image(self):
         from PIL import Image
-        import StringIO
+        import io
         r = self.app.post("/ctab2image", self.sample_mol_data)
         self.assertEqual(r.status_int, 200)
         self.assertEqual(r.content_type, 'image/png')
-        buff = StringIO.StringIO(r.body)
+        buff = io.StringIO(r.body)
         im = Image.open(buff)
         self.assertEqual(im.size, (800, 200))
         im.verify()
@@ -142,7 +142,7 @@ class TestServer(unittest.TestCase):
 
     def test_mcs(self):
         from rdkit import Chem
-        from StringIO import StringIO
+        from io import StringIO
         smis = ['c1ccccc1','c1ccccc1C','c1ccccc1O']
         sio = StringIO()
         w = Chem.SDWriter(sio)

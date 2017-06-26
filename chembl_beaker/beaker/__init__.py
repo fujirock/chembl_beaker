@@ -12,7 +12,7 @@ import json
 #-----------------------------------------------------------------------------------------------------------------------
 
 HTTP_CODES = bottle.HTTP_CODES.copy()
-HTTP_CODES = dict((y,x) for x,y in HTTP_CODES.iteritems())
+HTTP_CODES = dict((y,x) for x,y in HTTP_CODES.items())
 STATIC_ROOT = os.path.join(os.path.split(chembl_beaker.__file__)[0], 'static')
 PARAM_REGEX = re.compile(r'<[^<>]+>')
 DEFAULT_APPS = [
@@ -51,7 +51,7 @@ def loadPlugins(app, plugins):
             plugin_class = import_class(plugin)
             app.install(plugin_class())
         except Exception as e:
-            print "Failed to load plugin %s because of error %s" % (plugin, e.message)
+            print ("Failed to load plugin %s because of error %s" % (plugin, str(e)))
             continue
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ def loadApps(apps):
         try:
             __import__(module + ".views")
         except Exception as e:
-            print "Loading module %s failed because of error: %s" % (module, e.message)
+            print ("Loading module %s failed because of error: %s" % (module, str(e)))
             continue
 
 #-----------------------------------------------------------------------------------------------------------------------

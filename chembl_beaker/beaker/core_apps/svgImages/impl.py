@@ -17,7 +17,7 @@ except ImportError:
         cairo.HAS_SVG_SURFACE = True
 
 
-import StringIO
+import io
 from rdkit import Chem
 from chembl_beaker.beaker.draw import cairoCanvas
 from chembl_beaker.beaker import draw
@@ -41,7 +41,7 @@ def _mols2svg(mols, size, legend, kekulize=True, wedgeBonds=True, fitImage=True,
     if cffi and cairocffi.version <= (1,10,0) :
         imageData = io.BytesIO()
     else:
-        imageData = StringIO.StringIO()
+        imageData = io.StringIO()
     surf = cairo.SVGSurface(imageData,totalWidth,totalHeight)
     ctx = cairo.Context(surf)
     for i, mol in enumerate(mols):

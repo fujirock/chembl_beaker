@@ -9,7 +9,7 @@ from datetime import datetime, date
 import rdkit
 from rdkit import Chem
 from rdkit.Chem.rdchem import GetPeriodicTable
-from StringIO import StringIO
+from io import StringIO
 import os
 import getpass
 

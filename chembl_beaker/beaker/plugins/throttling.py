@@ -49,14 +49,14 @@ if key_verification_function:
         verified_key = import_class(key_verification_function)
     except ImportError:
         err = 'Error importing function %s' % key_verification_function
-        print err
+        print (err)
         raise Exception(err)
 
 else:
     if not AES:
-        print "API Key verification will be switched off - can't find pycrypto library"
+        print ("API Key verification will be switched off - can't find pycrypto library")
     if not secret_key:
-        print "API Key verification will be switched off - no AES key defined"
+        print ("API Key verification will be switched off - no AES key defined")
     verified_key = verify_key
 
 #-----------------------------------------------------------------------------------------------------------------------

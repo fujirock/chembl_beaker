@@ -2,7 +2,7 @@ __author__ = 'mnowotka'
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-import StringIO
+import io
 from itertools import cycle, islice
 from chembl_beaker.beaker import draw
 from chembl_beaker.beaker.utils.functional import _apply
@@ -28,7 +28,7 @@ def _mols2imageString(mols, size, legend, format, atomMapNumber=False, computeCo
         _apply(mols, _computeCoords, True)
     if atomMapNumber:
         _apply(mols, _atomMapNumber)
-    imageData = StringIO.StringIO()
+    imageData = io.StringIO()
     _mols2imageStream(mols, imageData, format, size, legend)
     return imageData.getvalue()
 

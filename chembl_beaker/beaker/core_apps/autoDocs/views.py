@@ -50,10 +50,10 @@ def spore():
 #        if uname in ret["methods"]:
 #            params = map(lambda x: x[1:-1].upper(), PARAM_REGEX.findall(route.rule))
 #            intersection = list(set(params) & set(ret["methods"][uname]["required_params"]))
-#            #print "intersection = %s" % intersection
+#            #print ("intersection = %s" % intersection)
 #            diff = list(set(params) ^ set(ret["methods"][uname]["required_params"]))
-#            #print "diff = %s" % diff
-#            #print "optional params = %s" % list(set(ret["methods"][uname].get("optional_params", []) + diff))
+#            #print ("diff = %s" % diff)
+#            #print ("optional params = %s" % list(set(ret["methods"][uname].get("optional_params", []) + diff)))
 #            ret["methods"][uname]["required_params"] = intersection
 #            ret["methods"][uname]["optional_params"] = list(set(ret["methods"][uname].get("optional_params", []) + diff))
 #            continue
